@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="main">
+<h1>Infopage of Frogs</h2>
+<p>After you are done reading you can particiate in a little quiz and play a quick game of frogger:</p>
+</div>
+
+<div class="tab">
+  <button class="tablinks" onclick="opentab(event, 'Facts')">Facts About Frogs</button>
+  <button class="tablinks" onclick="opentab(event, 'Quiz')">Test Your Knowledge On Frogs</button>
+  <button class="tablinks" onclick="opentab(event, 'Game')">Frogger</button>
+</div>
+
+<div id="Facts" class="tabcontent">
+        <h2>Basic Facts</h2>
+
+        <p>Frogs are <em>amphibians</em>, which comes from the Greek language and means "both lives." Most frogs are born in water as tadpoles and gradually change into frogs although some frogs, known as direct developers, are born as full frogs. This allows them to be born and live far away from water, such as on mountaintops.</p>
+  
+      <h2>Diet</h2>
+  
+        <p>A frog mainly lives on <em>insects</em> and <em>small animals</em> like earthworms, minnows and spiders.</p>
+  
+      <h2>Population</h2>
+  
+        <p>There are approximately <em>4,740 species of frogs</em> around the entire world. There are about 90 species of frogs in the United States. Unfortunately, about 120 amphibian species, including frogs, toads and salamanders, have disappeared since 1980. Historically, one species of amphibian would disappear every 250 years.</p>
+  
+      <h2>Range</h2>
+  
+        <p>Frogs can be found on every continent in the world <strong>except</strong> Antarctica. However, the highest concentration of frogs is found in <em>warmer tropical climates.</em></p>
+  
+      <h2>Behaviour</h2>
+  
+        <p>Frogs are known as indicator species and can give scientists valuable insight into how an ecosystem is functioning. Because they are predators and prey many animals are affected by them, <em>frogs provide insight</em> into the health of the ecosystem.</p>
+  
+      <h2>Bonus Facts</h2>
+  
+        <p>Did you know that? :</p>
+            <ul>
+              <li>The world's tiniest frogs are smaller than a dime, and the largest frog can grow to be longer than a foot and weigh more than 7 pounds!</li>
+              <li>Frogs don't need to drink the way we do: they absorb water through their permeable skin!</li>
+              <li>A Frog's call is unique to it's species, and some frog calls can be heard from up to a mile away</li>
+              <li>Some frogs can jump over 20 times their own body length, that equivalent to a human jumping 30m</li>
+            </ul>
+        
+  
+      <hr>
+      <p class="link"><img src="images/frog.png"> This is a disclaimer, you can check out the orignial source here <a href="https://www.defenders.org/frogs/basic-facts"
+          target="_blank">Defenders of Wildlife.</a></p>
+</div>
+
+<div id="Quiz" class="tabcontent">
+        <h2>Here's a little quiz, Let's see if you've been listening.</h1>
+
+        <p id=Q1>
+            1. What class of vertebrates are frogs? <br>
+            Answer: <input id="Q1A"> <span id="Q1R">--------</span>
+        </p>
+    
+        <p id=Q2>
+            2. Are frogs carnivorous animals? <br>
+            Answer: <input id="Q2A"> <span id="Q2R">--------</span>
+        </p>
+    
+        <p id=Q3>
+            3. True or False, there are less than 4740 species of frogs? <br>
+            Answer: <input id="Q3A"> <span id="Q3R">--------</span>
+        </p>
+    
+        <p id=Q4>
+            4. Can frogs be found in the north pole? <br>
+            Answer: <input id="Q4A"> <span id="Q4R">--------</span>
+        </p>
+    
+        <p id=Q5>
+            5. Frogs are known to scientists as ____________ species. <br>
+            Answer: <input id="Q5A"> <span id="Q5R">--------</span>
+        </p>
+    
+        <p id=Q6>
+            6. Frogs drink water through their skin because it is ____________. <br>
+            Answer: <input id="Q6A"> <span id="Q6R">--------</span>
+        </p>
+    
+        <button id="mark">Mark Quiz</button>
+    
+        <div id="math">Your score is - / - (-%). </div>
+        <span id="result"></span>
+ 
+</div>
+
+<div id="Game" class="tabcontent">
+    <h1>Frogger</h1>
+
+    <h2>Use W, A, S, D keys, must reach swamp home 3 times to win !!</h2>
+
+    <!-- Add a canvas element to the page -->
+    <canvas id="myCanvas"></canvas>
+
+    <!-- Load image to page -->
+    <img id="frogger" src="images/frogger.png">
+    <img id="holeL" src="images/blankhole.png">
+    <img id="holeC" src="images/blankhole2.png">
+    <img id="holeR" src="images/blankhole3.png">
+    <img id="log" src="images/log.png">
+    <img id="road" src="images/road.png">
+    <img id="water" src="images/water.png">
+    <img id="car" src="images/car.png">
+    <img id="car2" src="images/car2.png">
+    <img id="truck" src="images/truck.png">
+    <img id="bus" src="images/bus.png">
+    <img id="bigboy" src="images/bigboy.png">
+    <img id="bike" src="images/bike.png">
+    <img id="frogg" src="images/frogg.png">
+</div>
+
+
+<!-- LOAD JAVASCRIPT -->
+<script src="main.js"></script>
+
+</body>
+</html> 
