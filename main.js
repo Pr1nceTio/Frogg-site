@@ -200,7 +200,9 @@ let holeY = 20;
 let hole2Y = 10;
 let logSpeedR = 3;
 let logSpeedL = 2;
-let complete = 0;
+let inhouse1 = false;
+let inhouse2 = false;
+let inhouse3 = false;
 let notOnWater = true;
 
 // Frog spritesheet
@@ -523,7 +525,7 @@ function loop() {
     // Goal
 
     if (frogX > holes1X - 30 && frogX < holes1X + 90 && frogY < holeY + 50 && frogY > holeY - 10) {
-        complete++;
+        inhouse1 = true;
         document.getElementById("holeL").src = "images/fullhole.png";
         frogX = 370;
         frogY = 540;
@@ -531,7 +533,7 @@ function loop() {
     }
 
     if (frogX > holes2X - 30 && frogX < holes2X + 125 && frogY < hole2Y + 50 && frogY > hole2Y - 10) {
-        complete++;
+        inhouse2 = true;
         document.getElementById("holeC").src = "images/fullhole.png";
         frogX = 370;
         frogY = 540;
@@ -539,14 +541,14 @@ function loop() {
     }
 
     if (frogX > holes3X - 30 && frogX < holes3X + 90 && frogY < holeY + 50 && frogY > holeY - 10) {
-        complete++;
+        inhouse3 = true;
         document.getElementById("holeR").src = "images/fullhole.png";
         frogX = 370;
         frogY = 540;
         score += 1500
     }
 
-    if (complete == 3) {
+    if (inhouse1 && inhouse2 && inhouse3) {
         console.log("YOU'VE WON")
         gamecomplete()
     }
