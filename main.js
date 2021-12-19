@@ -200,9 +200,9 @@ let holeY = 20;
 let hole2Y = 10;
 let logSpeedR = 3;
 let logSpeedL = 2;
-let inhouse1 = false;
-let inhouse2 = false;
-let inhouse3 = false;
+let inHoleL = false;
+let inHoleC = false;
+let inHoleR = false;
 let notOnWater = true;
 
 // Frog spritesheet
@@ -264,9 +264,9 @@ if (gamerunning == true) {
 // Add Event Listeners
 document.addEventListener("keyup", move);
 
-// Update frog variables based on arrow key
+// Update frog variables based on "w", "a", "s", "d".
 function move(event) {
-    if (event.keyCode == 37 || event.key == "a") { // Left Arrow
+    if (event.key == "a") { // frog goes left
 
         if (frogY <= 290) {
             frogX -= 55;
@@ -274,7 +274,7 @@ function move(event) {
             frogX -= 75;
         }
 
-    } else if (event.keyCode == 39 || event.key == "d") { // Right Arrow
+    } else if (event.key == "d") { // frog goes right
 
         if (frogY <= 290) {
             frogX += 55;
@@ -282,7 +282,7 @@ function move(event) {
             frogX += 75;
         }
 
-    } else if (event.keyCode == 38 || event.key == "w") { // Up Arrow
+    } else if (event.key == "w") { // frog goes up
 
         if (frogY <= 290) {
             frogY -= 55;
@@ -290,7 +290,7 @@ function move(event) {
             frogY -= 75;
         }
 
-    } else if (event.keyCode == 40 || event.key == "s") { // Down Arrow
+    } else if (event.key == "s") { // frog goes down
 
         if (frogY <= 290) {
             frogY += 55;
@@ -361,7 +361,14 @@ function loop() {
 
     // Inside Loop Functions
 
-    function death() {
+    function death(scoreLoss) {
+        frogX = 370;
+        frogY = 540;
+        notOnWater = true;
+        score -= scoreLoss;
+    }
+
+    function sendToSpawn() {
         frogX = 370;
         frogY = 540;
         notOnWater = true;
@@ -379,16 +386,16 @@ function loop() {
 
     //  Frog dies river end right
     if (frogX + 45 > cnv.width && frogY >= 130 && frogY < 230) {
-        death()
+        death(500)
     }
     //  Frog dies river end left
     if (frogX < 0 && frogY >= 130 && frogY < 230) {
-        death()
+        death(500)
     }
 
     //  Frog can't pass bottom wall
     if (frogY + 45 > cnv.height) {
-        frogY = 558;
+        frogY = 540;
     }
 
     //  Frog can't pass top wall
@@ -463,33 +470,27 @@ function loop() {
     // Collisions
 
     if (frogX > carX - 50 && frogX < carX + 100 && frogY < carY + 55 && frogY > carY - 30 && score > 0) {
-        death()
-        score -= 1000;
+        death(1000)
     }
 
     if (frogX > carX2 - 50 && frogX < carX2 + 100 && frogY < carY2 + 55 && frogY > carY2 - 30 && score > 0) {
-        death()
-        score -= 1000;
+        death(1000)
     }
 
     if (frogX > bigboyX - 50 && frogX < bigboyX + 70 && frogY < bigboyY + 30 && frogY > bigboyY - 30 && score > 0) {
-        death()
-        score -= 2500;
+        death(2500)
     }
 
     if (frogX > bikeX - 40 && frogX < bikeX + 125 && frogY < bikeY + 50 && frogY > bikeY - 20 && score > 0) {
-        death()
-        score -= 1000;
+        death(1000)
     }
 
     if (frogX > busX - 40 && frogX < busX + 175 && frogY < busY + 60 && frogY > busY - 30 && score > 0) {
-        death()
-        score -= 1000;
+        death(1000)
     }
 
     if (frogX > truckX - 30 && frogX < truckX + 225 && frogY < truckY + 100 && frogY > truckY - 10 && score > 0) {
-        death()
-        score -= 1000;
+        death(1000)
     }
 
     // Attach Log Top
@@ -500,7 +501,7 @@ function loop() {
         frogOnLogL()
     } else if (frogX > logX3 - 25 && frogX < logX3 + 125 && frogY < logY + 10 && frogY > logY - 15) {
         frogOnLogL()
-    } else if (frogY < 230 && frogY > 130) {
+    } else if (frogY < 180 && frogY > 129) {
         notOnWater = false;
     }
 
@@ -512,43 +513,46 @@ function loop() {
         frogOnLogR()
     } else if (frogX > logX6 - 25 && frogX < logX6 + 125 && frogY < logY2 + 10 && frogY > logY2 - 15) {
         frogOnLogR()
-    } else if (frogY < 230 && frogY > 130) {
+    } else if (frogY < 230 && frogY > 180) {
         notOnWater = false;
     }
 
     // Die by water
 
-    if (frogY < 230 && frogY > 130 && notOnWater == false) {
-        death()
+    if (frogY < 230 && frogY > 129 && notOnWater == false) {
+        death(1000)
     }
 
     // Goal
 
     if (frogX > holes1X - 30 && frogX < holes1X + 90 && frogY < holeY + 50 && frogY > holeY - 10) {
-        inhouse1 = true;
-        document.getElementById("holeL").src = "images/fullhole.png";
-        frogX = 370;
-        frogY = 540;
-        score += 1500
+        if (!inHoleL) {
+            inHoleL = true;
+            document.getElementById("holeL").src = "images/fullhole.png";
+            sendToSpawn();
+            score += 1500
+        }
     }
 
     if (frogX > holes2X - 30 && frogX < holes2X + 125 && frogY < hole2Y + 50 && frogY > hole2Y - 10) {
-        inhouse2 = true;
-        document.getElementById("holeC").src = "images/fullhole.png";
-        frogX = 370;
-        frogY = 540;
-        score += 2000
+        if (!inHoleC) {
+            inHoleC = true;
+            document.getElementById("holeC").src = "images/fullhole.png";
+            sendToSpawn();
+            score += 2000
+        }
     }
 
     if (frogX > holes3X - 30 && frogX < holes3X + 90 && frogY < holeY + 50 && frogY > holeY - 10) {
-        inhouse3 = true;
-        document.getElementById("holeR").src = "images/fullhole.png";
-        frogX = 370;
-        frogY = 540;
-        score += 1500
+        if (!inHoleR) {
+            inHoleR = true;
+            document.getElementById("holeR").src = "images/fullhole.png";
+            sendToSpawn();
+            score += 1500
+        }
     }
 
-    if (inhouse1 && inhouse2 && inhouse3) {
+    if (inHoleL && inHoleC && inHoleR) {
         console.log("YOU'VE WON")
         gamecomplete()
     }
