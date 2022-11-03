@@ -1,4 +1,4 @@
-## Frogg-site(Infopage, Quiz and Game on the theme of Frogs)
+## Frogg-site (Infopage, Quiz and Game on the theme of Frogs)
 
 **Proposal:** This website is a fun way to displayed my web-dev skills with HTML and CSS and my knowledge of applications
 and client-side scripting with Javascript. This application should be free for anyone to use, however its intended 
@@ -18,11 +18,11 @@ new things and experiment anyways I can, while still creating an enjoyable exper
 - Implement frog moving animation
 
 
-# How to Install
+## How to Install
 There is no need to install this web application, you can access it through github pages, the link is:
 https://t1oluwan1.github.io/Frogg-site/
 
-# How to Use
+## How to Use
 There are 3 tabs on the website, the first is a short and fun read containing fun facts and basic information about frog 
 and amphibian life, the next tab contains a mini quiz to test you on the knowledge you have just read, and the third and
 final tab is a mini frogger game that one can play for the sake of their entertainment
